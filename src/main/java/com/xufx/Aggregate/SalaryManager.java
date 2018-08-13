@@ -4,7 +4,6 @@ import com.xufx.Abstract.Aggregate;
 import com.xufx.Entity.PayModel;
 import com.xufx.Iterator.ArrayIteratorImpl;
 
-import java.util.Iterator;
 
 /**
  * 被客户方收购的那个公司的工资管理类
@@ -40,7 +39,7 @@ public class SalaryManager extends Aggregate {
         pms[1] = pm2;
     }
 
-    public Iterator createIterator(){
+    public ArrayIteratorImpl createIterator(){
         return new ArrayIteratorImpl(this);
     }
     public Object get(int index){
