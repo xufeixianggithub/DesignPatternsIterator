@@ -2,7 +2,7 @@ package com.xufx.Interfaces;
 
 import java.util.*;
 /**
- * 定义翻页访问聚合元素的迭代接口
+ * 定义随机翻页访问聚合元素的迭代接口
  */
 public interface AggregationIterator {
     /**
@@ -12,21 +12,16 @@ public interface AggregationIterator {
      */
     public boolean hasNext();
     /**
-     * 取出下面几个元素
-     * @param num 需要获取的记录条数
-     * @return 下面几个元素
-     */
-    public Collection next(int num);
-    /**
      * 判断是否还有上一个元素，无所谓是否够一页的数据，
      * 因为最后哪怕只有一条数据，也是要算一页的
      * @return 如果有上一个元素，返回true，没有上一个元素就返回false
      */
     public boolean hasPrevious();
     /**
-     * 取出上面几个元素
-     * @param num 需要获取的记录条数
-     * @return 上面几个元素
+     * 取出指定页数的数据
+     * @param pageNum 要获取的页数
+     * @param pageShow 每页显示的数据条数
+     * @return 指定页数的数据
      */
-    public Collection previous(int num);
+    public Collection getPage(int pageNum,int pageShow);
 }

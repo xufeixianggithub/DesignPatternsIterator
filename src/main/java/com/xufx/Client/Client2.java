@@ -16,17 +16,21 @@ public class Client2 {
         AggregationIterator it = salaryManager.createIterator();
 
         //获取第一页，每页显示2条
-        Collection col = it.next(2);
+        Collection col = it.getPage(1,2);
         System.out.println("第一页数据：");
         print(col);
         //获取第二页，每页显示2条
-        Collection col2 = it.next(2);
+        Collection col2 = it.getPage(2,2);
         System.out.println("第二页数据：");
         print(col2);
-        //向前一页，也就是再次获取第二页
-        Collection col3 = it.previous(2);
-        System.out.println("再次获取第二页数据：");
+        //再次获取第一页
+        Collection col3 = it.getPage(1,2);
+        System.out.println("再次获取第一页数据：");
         print(col3);
+        //获取第三页
+        Collection col4 = it.getPage(3,2);
+        System.out.println("获取第三页数据：");
+        print(col4);
     }
     private static void print(Collection col){
         Iterator it = col.iterator();
