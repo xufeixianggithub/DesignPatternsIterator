@@ -1,42 +1,47 @@
 package com.xufx.Iterator;
 
 import com.xufx.Aggregate.SalaryManager;
-import com.xufx.Interfaces.Iterator;
 
+import java.util.Iterator;
 /**
  * 用来实现访问数组的迭代接口
  */
-public class ArrayIteratorImpl implements Iterator {
+public class ArrayIteratorImpl implements Iterator{
     /**
      * 用来存放被迭代的聚合对象
      */
     private SalaryManager aggregate = null;
     /**
      * 用来记录当前迭代到的位置索引
-     * -1表示刚开始的时候，迭代器指向聚合对象第一个对象之前
      */
-    private int index = -1;
+    private int index = 0;
 
     public ArrayIteratorImpl(SalaryManager aggregate){
         this.aggregate = aggregate;
     }
 
 
-    public void first(){
-        index = 0;
-    }
-    public void next(){
-        if(index < this.aggregate.size()){
-            index = index + 1;
-        }
-    }
-    public boolean isDone(){
-        if(index == this.aggregate.size()){
+    public boolean hasNext() {
+        //判断是否还有下一个元素
+        if(aggregate!=null && index<aggregate.size()){
             return true;
         }
         return false;
     }
-    public Object currentItem(){
-        return this.aggregate.get(index);
+
+
+    public Object next() {
+        Object retObj = null;
+        if(hasNext()){
+            retObj = aggregate.get(index);
+            //每取走一个值，就把已访问索引加1
+            index++;
+        }
+        return retObj;
+    }
+
+
+    public void remove() {
+        //暂时可以不实现
     }
 }

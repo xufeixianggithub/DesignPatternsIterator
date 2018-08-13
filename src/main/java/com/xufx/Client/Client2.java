@@ -2,7 +2,9 @@ package com.xufx.Client;
 
 import com.xufx.Aggregate.PayManager;
 import com.xufx.Aggregate.SalaryManager;
-import com.xufx.Interfaces.Iterator;
+import com.xufx.Entity.PayModel;
+
+import java.util.Iterator;
 
 public class Client2 {
     public static void main(String[] args) {
@@ -12,7 +14,6 @@ public class Client2 {
         payManager.calcPay();
         System.out.println("集团工资列表：");
         test(payManager.createIterator());
-
         //访问新收购公司的工资列表
         SalaryManager salaryManager = new SalaryManager();
         //先计算再获取
@@ -25,15 +26,9 @@ public class Client2 {
      * @param it 聚合对象的迭代器
      */
     private static void test(Iterator it){
-        //循环输出聚合对象中的值
-        //首先设置迭代器到第一个元素
-        it.first();
-        while(!it.isDone()){
-            //取出当前的元素来
-            Object obj = it.currentItem();
-            System.out.println("the obj=="+obj);
-            //如果还没有迭代到最后，那么就向下迭代一个
-            it.next();
+        while(it.hasNext()){
+            PayModel pm = (PayModel)it.next();
+            System.out.println(pm);
         }
     }
 }

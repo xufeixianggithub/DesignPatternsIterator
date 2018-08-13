@@ -1,6 +1,7 @@
 package com.xufx.Abstract;
 
-import com.xufx.Interfaces.Iterator;
+
+import java.util.Iterator;
 
 /**
  * 聚合对象的接口，定义创建相应迭代器对象的接口

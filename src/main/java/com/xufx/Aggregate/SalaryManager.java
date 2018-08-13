@@ -2,8 +2,9 @@ package com.xufx.Aggregate;
 
 import com.xufx.Abstract.Aggregate;
 import com.xufx.Entity.PayModel;
-import com.xufx.Interfaces.Iterator;
 import com.xufx.Iterator.ArrayIteratorImpl;
+
+import java.util.Iterator;
 
 /**
  * 被客户方收购的那个公司的工资管理类

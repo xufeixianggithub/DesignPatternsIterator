@@ -2,25 +2,21 @@ package com.xufx.Aggregate;
 
 import com.xufx.Abstract.Aggregate;
 import com.xufx.Entity.PayModel;
-import com.xufx.Interfaces.Iterator;
-import com.xufx.Iterator.CollectionIteratorImpl;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
  * 客户方已有的工资管理对象
- */
-public class PayManager extends Aggregate {
-    /**
-     * 聚合对象，这里是Java的集合对象
-     */
-    private List list = new ArrayList();
+         */
+public class PayManager extends Aggregate{
+    private List<PayModel> list = new ArrayList<PayModel>();
     /**
      * 获取工资列表
      * @return 工资列表
      */
-    public List getPayList(){
+    public List<PayModel> getPayList(){
         return list;
     }
     /**
@@ -41,17 +37,7 @@ public class PayManager extends Aggregate {
         list.add(pm2);
     }
 
-    public Iterator createIterator(){
-        return new CollectionIteratorImpl(this);
-    }
-    public Object get(int index){
-        Object retObj = null;
-        if(index < this.list.size()){
-            retObj = this.list.get(index);
-        }
-        return retObj;
-    }
-    public int size(){
-        return this.list.size();
+    public Iterator createIterator() {
+        return list.iterator();
     }
 }
